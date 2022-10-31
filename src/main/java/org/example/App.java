@@ -18,6 +18,6 @@ public class App {
 
         List<Transaction> transactionList = XMLDomRead.xmlParser("src\\main\\resources\\terminal.xml");
 
-       RunClient.runClient("C:\\Users\\Azadeh\\response.xml", server, transactionList);
+       RunClient.runClient("C:\\Users\\Azadeh\\Desktop\\response.xml", server, transactionList);
     }
 }

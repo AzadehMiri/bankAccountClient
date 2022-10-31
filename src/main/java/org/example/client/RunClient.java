@@ -14,18 +14,21 @@ import java.util.List;
 
 public class RunClient {
 
-    public static void runClient(String responsePath,Server server, List<Transaction> transactions) {
+    public static void runClient(String responsePath, Server server, List<Transaction> transactions) {
         try {
+            System.out.println("stat client");
             Socket socket = new Socket(server.getServerIp(), server.getPortNumber());
+            socket.setSoTimeout(30000);
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             for (Transaction transaction : transactions) {
                 outputStream.writeObject(transaction);
-                Transaction inputTransaction=(Transaction) inputStream.readObject();
-
-               WriteXml.writeResponseToXml(responsePath,inputTransaction);
+                Transaction inputTransaction = (Transaction) inputStream.readObject();
+                System.out.println(inputTransaction);
+                WriteXml.writeResponseToXml(responsePath, inputTransaction);
             }
-
+            socket.close();
+            System.exit(0);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException | ParserConfigurationException | TransformerException e) {
