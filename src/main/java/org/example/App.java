@@ -14,10 +14,10 @@ import java.util.List;
 public class App {
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
         Server server = new Server();
-        Configuration.ipAndPortConfig("src\\main\\resources\\terminal.xml",server);
+        Configuration.ipAndPortConfig("src\\main\\resources\\terminal.xml", server);
 
         List<Transaction> transactionList = XMLDomRead.xmlParser("src\\main\\resources\\terminal.xml");
 
-       RunClient.runClient("C:\\Users\\Azadeh\\Desktop\\response.xml", server, transactionList);
+        RunClient.runClient("C:\\Users\\Azadeh\\Desktop\\response.xml", server, transactionList);
     }
 }

@@ -33,6 +33,8 @@ public class RunClient {
             e.printStackTrace();
         } catch (ClassNotFoundException | ParserConfigurationException | TransformerException e) {
             throw new RuntimeException(e);
+        }finally {
+
         }
     }
 }
